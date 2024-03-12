@@ -49,7 +49,10 @@ const Navbar = () => {
       <nav>
         <ul className="flex gap-4 items-center p-4">
           {menu.map(({ path, icon, clickedIcon }) => (
-            <li key={path} className="hover:scale-105 transition-all">
+            <li
+              key={path}
+              className="hover:scale-105 transition-all text-violet-900"
+            >
               <Link href={path}>{pathName === path ? clickedIcon : icon}</Link>
             </li>
           ))}
