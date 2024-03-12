@@ -1,18 +1,18 @@
 type Props = {
   text: string;
   onClick: () => void;
+  size?: "small" | "big";
 };
 
-const ColorButton = ({ text, onClick }: Props) => {
+const ColorButton = ({ text, onClick, size = "small" }: Props) => {
   return (
-    <div className="rounded-md bg-gradient-to-bl from-violet-600 via-fuchsia-500 to-blue-300 p-[0.15rem]">
-      <button
-        className="bg-white rounded-md text-base p-[0.3rem] hover:opacity-90 transition-all"
-        onClick={onClick}
-      >
-        {text}
-      </button>
-    </div>
+    <button
+      className={`bg-violet-500 hover:bg-violet-400 text-white font-bold border-b-4 border-violet-700 hover:border-violet-500 rounded transition-all
+      ${size === "big" ? "py-4 px-8 text-3xl" : "py-2 px-4"}`}
+      onClick={onClick}
+    >
+      {text}
+    </button>
   );
 };
 

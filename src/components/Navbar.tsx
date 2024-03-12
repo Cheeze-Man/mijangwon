@@ -9,6 +9,8 @@ import NewIcon from "./ui/icons/NewIcon";
 import SearchFillIcon from "./ui/icons/SearchFillIcon";
 import SearchIcon from "./ui/icons/SearchIcon";
 import ColorButton from "./ui/ColorButton";
+import Image from "next/image";
+import Avatar from "./Avatar";
 
 const menu = [
   {
@@ -30,11 +32,19 @@ const menu = [
 const Navbar = () => {
   const pathName = usePathname();
   const { data: session } = useSession();
+  const user = session?.user;
 
   return (
     <div className="flex justify-between items-center px-6">
       <Link href="/">
-        <h1 className="text-3xl font-extrabold text-violet-800">Mijangwon</h1>
+        <Image
+          className="text-3xl font-extrabold text-violet-800"
+          src="/images/logo.png"
+          alt="Mijangwon"
+          width={230}
+          height={80}
+          priority
+        />
       </Link>
       <nav>
         <ul className="flex gap-4 items-center p-4">
@@ -43,11 +53,20 @@ const Navbar = () => {
               <Link href={path}>{pathName === path ? clickedIcon : icon}</Link>
             </li>
           ))}
-          {session ? (
-            <ColorButton text="Sign out" onClick={() => signOut()} />
-          ) : (
-            <ColorButton text="Sign in" onClick={() => signIn()} />
+          {user && (
+            <li>
+              <Link href={`/user/${user.username}`}>
+                <Avatar image={user.image} />
+              </Link>
+            </li>
           )}
+          <li>
+            {session ? (
+              <ColorButton text="Sign out" onClick={() => signOut()} />
+            ) : (
+              <ColorButton text="Sign in" onClick={() => signIn()} />
+            )}
+          </li>
         </ul>
       </nav>
     </div>

@@ -1,4 +1,6 @@
-import { AiOutlineHome } from 'react-icons/ai';
-export default function HomeIcon() {
-  return <AiOutlineHome className='w-7 h-7' />;
-}
+import { AiOutlineHome } from "react-icons/ai";
+const HomeIcon = () => {
+  return <AiOutlineHome className="w-7 h-7" />;
+};
+
+export default HomeIcon;
