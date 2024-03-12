@@ -1,3 +1,4 @@
+import { addUser } from "@/service/user";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 export const authOptions: NextAuthOptions = {
@@ -9,6 +10,19 @@ export const authOptions: NextAuthOptions = {
   ],
 
   callbacks: {
+    async signIn({ user: { id, name, image, email } }) {
+      if (!email) {
+        return false; // 이메일 없으면 로그인 실패 페이지로 이동
+      }
+      addUser({
+        id,
+        name: name || "",
+        image,
+        email,
+        username: email?.split("@")[0],
+      });
+      return true; // 로그인 성공시 true 반환 받아서 로그인 성공 페이지로 이동
+    },
     async session({ session }) {
       const user = session?.user;
       if (user) {
