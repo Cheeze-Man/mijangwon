@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import HomeFillIcon from "./ui/icons/HomeFillIcon";
 import HomeIcon from "./ui/icons/HomeIcon";
 import NewFillIcon from "./ui/icons/NewFillIcon";
@@ -9,7 +10,6 @@ import NewIcon from "./ui/icons/NewIcon";
 import SearchFillIcon from "./ui/icons/SearchFillIcon";
 import SearchIcon from "./ui/icons/SearchIcon";
 import ColorButton from "./ui/ColorButton";
-import Image from "next/image";
 import Avatar from "./Avatar";
 
 const menu = [
@@ -59,7 +59,7 @@ const Navbar = () => {
           {user && (
             <li>
               <Link href={`/user/${user.username}`}>
-                <Avatar image={user.image} />
+                <Avatar image={user.image} size="small" highlight />
               </Link>
             </li>
           )}
