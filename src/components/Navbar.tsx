@@ -35,7 +35,7 @@ const Navbar = () => {
   const user = session?.user;
 
   return (
-    <div className="flex justify-between items-center px-6">
+    <div className="flex justify-between items-center md:px-24 transition-all">
       <Link href="/">
         <Image
           className="text-3xl font-extrabold text-violet-800"
