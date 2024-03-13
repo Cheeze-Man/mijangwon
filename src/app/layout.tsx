@@ -2,6 +2,7 @@ import "./globals.css";
 import { Open_Sans } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import AuthContext from "@/context/AuthContext";
+import SWRConfigContext from "@/context/SWRConfigContext";
 
 const openSans = Open_Sans({ subsets: ["latin"] });
 
@@ -18,7 +19,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           <header className="sticky top-0 bg-white z-10 border-b">
             <Navbar />
           </header>
-          <main>{children}</main>
+          <main>
+            <SWRConfigContext>{children}</SWRConfigContext>
+          </main>
         </AuthContext>
       </body>
     </html>
