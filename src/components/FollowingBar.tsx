@@ -4,6 +4,7 @@ import Link from "next/link";
 import { SyncLoader } from "react-spinners";
 import useSWR from "swr";
 import Avatar from "./Avatar";
+import ScrollableBar from "./ui/ScrollableBar";
 
 const FollowingBar = () => {
   const { data, error, isLoading } = useSWR<DetailUser>("/api/me");
@@ -30,21 +31,20 @@ const FollowingBar = () => {
         </p>
       )}
       {users && users.length > 0 && (
-        <ul className="w-full flex gap-2">
+        <ScrollableBar>
           {users.map(({ username, image }) => (
-            <li key={username}>
-              <Link
-                className="flex flex-col items-center w-20"
-                href={`/user/${username}`}
-              >
-                <Avatar image={image} highlight />
-                <p className="w-full text-center text-sm text-ellipsis overflow-hidden">
-                  {username}
-                </p>
-              </Link>
-            </li>
+            <Link
+              key={username}
+              className="flex flex-col items-center w-20"
+              href={`/user/${username}`}
+            >
+              <Avatar image={image} highlight />
+              <p className="w-full text-center text-sm text-ellipsis overflow-hidden">
+                {username}
+              </p>
+            </Link>
           ))}
-        </ul>
+        </ScrollableBar>
       )}
     </section>
   );
