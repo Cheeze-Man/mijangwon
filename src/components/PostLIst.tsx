@@ -1,6 +1,5 @@
 "use client";
 import { SimplePost } from "@/model/post";
-import { log } from "console";
 import { GridLoader } from "react-spinners";
 import useSWR from "swr";
 import PostListCard from "./PostListCard";
@@ -11,7 +10,7 @@ const PostLIst = () => {
   return (
     <section>
       {isLoading && (
-        <div>
+        <div className="text-center mt-32">
           <GridLoader color="#8B5CF6" />
         </div>
       )}
@@ -19,7 +18,7 @@ const PostLIst = () => {
         <ul>
           {posts &&
             posts.map((post) => (
-              <li key={post.id}>
+              <li key={post.id} className="mb-4">
                 <PostListCard post={post} />
               </li>
             ))}
