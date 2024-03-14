@@ -14,7 +14,7 @@ const Home = async () => {
   }
 
   return (
-    <section className="flex flex-col md:flex-row md:justify-between max-w-full px-8 py-6 md:px-64 transition-all">
+    <section className="w-full flex flex-col md:flex-row max-w-[850px] p-4">
       <div className="w-full basis-3/4 min-w-0">
         <FollowingBar />
         <PostLIst />

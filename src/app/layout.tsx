@@ -15,9 +15,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="ko" className={openSans.className}>
       <body className="w-full max-w-full overflow-auto mx-auto">
-        {/* 원래는 max-w-full -> max-w-xl */}
+        {/* 원래는 max-w-full -> max-w-screen-xl */}
         <AuthContext>
-          <header className="sticky top-0 bg-white z-10 border-b">
+          <header className="sticky top-0 bg-white z-10 border-b flex justify-center">
             <Navbar />
           </header>
           <main className="w-full flex justify-center bg-neutral-50 min-h-full">
