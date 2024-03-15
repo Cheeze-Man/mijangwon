@@ -24,6 +24,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             <SWRConfigContext>{children}</SWRConfigContext>
           </main>
         </AuthContext>
+        <div id="portal" />
       </body>
     </html>
   );
