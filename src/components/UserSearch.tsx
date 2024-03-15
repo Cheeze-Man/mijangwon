@@ -1,23 +1,22 @@
 "use client";
 import { FormEvent, useState } from "react";
 import useSWR from "swr";
+import useDebounce from "@/hooks/debounce";
 import { ProfileUser } from "@/model/user";
 import GridSpinner from "./ui/GridSpinner";
 import UserCard from "./UserCard";
 
 const UserSearch = () => {
   const [keyword, setKeyword] = useState("");
+  const debouncedKeyword = useDebounce(keyword);
   const {
     data: users,
     isLoading,
     error,
-  } = useSWR<ProfileUser[]>(`/api/search/${keyword}`);
+  } = useSWR<ProfileUser[]>(`/api/search/${debouncedKeyword}`);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    // setKeyword("");
-    // window.location.href = `/search/${keyword}`;
-    // return false; // 새로고침 방지
   };
 
   return (
