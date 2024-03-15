@@ -14,13 +14,15 @@ export const metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="ko" className={openSans.className}>
-      <body className="w-full max-w-full overflow-auto mx-auto">
+      <body className="w-full bg-neutral-50 overflow-auto">
         {/* 원래는 max-w-full -> max-w-screen-xl */}
         <AuthContext>
-          <header className="sticky top-0 bg-white z-10 border-b flex justify-center">
-            <Navbar />
+          <header className="sticky top-0 bg-white z-10 border-b">
+            <div className="max-w-screen-xl mx-auto">
+              <Navbar />
+            </div>
           </header>
-          <main className="w-full flex justify-center bg-neutral-50 min-h-full">
+          <main className="w-full flex justify-center">
             <SWRConfigContext>{children}</SWRConfigContext>
           </main>
         </AuthContext>
