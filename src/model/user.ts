@@ -14,6 +14,6 @@ export type DetailUser = User & {
 };
 
 export type ProfileUser = User & {
-  follwing: number;
-  follwers: number;
+  following: number;
+  followers: number;
 };
