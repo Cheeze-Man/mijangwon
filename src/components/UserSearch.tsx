@@ -21,9 +21,10 @@ const UserSearch = () => {
   };
 
   return (
-    <>
-      <form onSubmit={onSubmit}>
+    <section className="w-full max-w-2xl my-4 flex flex-col items-center">
+      <form className="w-full mb-4" onSubmit={onSubmit}>
         <input
+          className="w-full text-xl p-3 outline-none border border-gray-400"
           type="text"
           autoFocus
           placeholder="사용자 이름을 입력해주세요."
@@ -36,7 +37,7 @@ const UserSearch = () => {
       {!isLoading && !error && users?.length === 0 && (
         <p>검색 결과와 일치하는 유저가 없습니다 😅</p>
       )}
-      <ul>
+      <ul className="w-full p-4">
         {users &&
           users.map((user) => (
             <li key={user.name}>
@@ -44,7 +45,7 @@ const UserSearch = () => {
             </li>
           ))}
       </ul>
-    </>
+    </section>
   );
 };
 

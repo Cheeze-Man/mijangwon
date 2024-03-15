@@ -10,12 +10,15 @@ const UserCard = ({
   user: { name, username, image, following, followers },
 }: Props) => {
   return (
-    <Link href={`/user/${username}`}>
+    <Link
+      className="flex items-center w-full rounded-sm border border-neutral-300 mb-2 p-4 bg-white hover:bg-neutral-50 transition-all"
+      href={`/user/${username}`}
+    >
       <Avatar image={image} />
-      <div>
-        <p>{username}</p>
-        <p>{name}</p>
-        <p>{`${followers} followers ${following} follwing`}</p>
+      <div className="text-neutral-500">
+        <p className="text-black font-bold leading-4 italic">@{username}</p>
+        <p className="text-sm">{name}</p>
+        <p className="text-xs leading-4">{`${followers} followers ${following} follwing`}</p>
       </div>
     </Link>
   );
