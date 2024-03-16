@@ -22,7 +22,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
               <Navbar />
             </div>
           </header>
-          <main className="w-full flex justify-center">
+          <main className="max-w-screen-xl w-full flex justify-center mx-auto">
             <SWRConfigContext>{children}</SWRConfigContext>
           </main>
         </AuthContext>
