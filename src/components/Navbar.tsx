@@ -36,13 +36,21 @@ const Navbar = () => {
 
   return (
     <div className="flex justify-between items-center w-full max-w-screen-xl transition-all">
-      <Link href="/">
+      <Link className="flex items-center gap-1.5 p-4" href="/">
         <Image
           className="text-3xl font-extrabold text-violet-800"
-          src="/images/logo.png"
-          alt="Mijangwon"
-          width={230}
-          height={80}
+          src="/images/logo_mini.png"
+          alt="O"
+          width={45}
+          height={45}
+          priority
+        />
+        <Image
+          className="text-3xl font-extrabold text-violet-800 hidden md:inline"
+          src="/images/logo_text.png"
+          alt="Ouroom"
+          width={210}
+          height={45}
           priority
         />
       </Link>
