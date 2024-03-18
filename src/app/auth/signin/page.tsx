@@ -1,8 +1,14 @@
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import { getProviders } from "next-auth/react";
-import { getServerSession } from "next-auth";
+import { Metadata } from "next";
 import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth";
+import { getProviders } from "next-auth/react";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import Signin from "@/components/Signin";
+
+export const metadata: Metadata = {
+  title: "Signin",
+  description: "Signup or Login to Ouroom",
+};
 
 type Props = {
   searchParams: {

@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import AuthContext from "@/context/AuthContext";
@@ -6,8 +7,11 @@ import SWRConfigContext from "@/context/SWRConfigContext";
 
 const openSans = Open_Sans({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "Ouroom",
+export const metadata: Metadata = {
+  title: {
+    default: "Ouroom",
+    template: "Ouroom | %s",
+  },
   description: "아우름 | SNS",
 };
 
