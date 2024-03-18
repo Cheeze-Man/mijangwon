@@ -23,15 +23,22 @@ export const authOptions: NextAuthOptions = {
       });
       return true; // 로그인 성공시 true 반환 받아서 로그인 성공 페이지로 이동
     },
-    async session({ session }) {
+    async session({ session, token }) {
       const user = session?.user;
       if (user) {
         session.user = {
           ...user,
           username: user.email?.split("@")[0] || "",
+          id: token.id as string,
         };
       }
       return session;
+    },
+    async jwt({ token, user }) {
+      if (user) {
+        token.sub = user.id;
+      }
+      return token; // 세션 정보를 저장하기 위해 토큰 반환
     },
   },
 

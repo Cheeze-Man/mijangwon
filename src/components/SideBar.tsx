@@ -20,7 +20,7 @@ const SideBar = ({ user: { name, username, image } }: Props) => {
         Language
       </p>
       <p className="font-bold text-sm mt-8 text-neutral-500">
-        ⓒCopyright MIJANGWON from CheezeMan
+        ⓒCopyright OUROOM from CheezeMan
       </p>
     </>
   );
