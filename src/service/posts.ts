@@ -1,5 +1,5 @@
-import { client, urlFor } from "./sanity";
 import { SimplePost } from "./../model/post";
+import { client, urlFor } from "./sanity";
 
 const simplePostProjection = `
     ...,
@@ -20,7 +20,9 @@ export async function getFollowingPostsOf(username: string) {
           || author._ref in *[_type == "user" && username == "${username}"].following[]._ref]
           | order(_createdAt desc){
           ${simplePostProjection}
-        }`
+        }`,
+      { username }, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
+      { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
     )
     .then(mapPosts);
 }
@@ -37,7 +39,9 @@ export async function getPost(id: string) {
       comments[]{comment, "username": author->username, "image": author->image},
       "id":_id,
       "createdAt":_creatdAt
-    }`
+    }`,
+      { username }, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
+      { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
     )
     .then((post) => ({ ...post, image: urlFor(post.image) }));
 }
@@ -48,7 +52,9 @@ export async function getPostsOf(username: string) {
       `*[_type == "post" && author->username == "${username}"]
       | order(_createdAt desc){
         ${simplePostProjection}
-      }`
+      }`,
+      { username }, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
+      { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
     )
     .then(mapPosts);
 }
@@ -58,7 +64,9 @@ export async function getLikedPostsOf(username: string) {
       `*[_type == "post" && "${username}" in likes[]->username]
       | order(_createdAt desc){
         ${simplePostProjection}
-      }`
+      }`,
+      { username }, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
+      { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
     )
     .then(mapPosts);
 }
@@ -68,20 +76,23 @@ export async function getSavedPostsOf(username: string) {
       `*[_type == "post" && _id in *[_type=="user" && username=="${username}"].bookmarks[]._ref]
       | order(_createdAt desc){
         ${simplePostProjection}
-      }`
+      }`,
+      { username }, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
+      { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
     )
     .then(mapPosts);
 }
 function mapPosts(posts: SimplePost[]) {
   return posts.map((post: SimplePost) => ({
     ...post,
+    likes: post.likes ?? [],
     image: urlFor(post.image),
   }));
 }
 
 export async function likePost(postId: string, userId: string) {
   return client
-    .patch(postId)
+    .patch(postId) //
     .setIfMissing({ likes: [] })
     .append("likes", [
       {

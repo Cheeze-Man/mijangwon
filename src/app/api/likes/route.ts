@@ -8,7 +8,7 @@ export async function PUT(req: NextRequest) {
   const user = session?.user;
 
   if (!user) {
-    return new Response("Unauthorized Error", { status: 401 });
+    return new Response("Authentication Error", { status: 401 });
   }
 
   const { id, like } = await req.json();

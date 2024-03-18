@@ -31,9 +31,10 @@ export async function getUserByUsername(username: string) {
       following[]->{username,image},
       followers[]->{username,image},
       "bookmarks":bookmarks[]->_id
-    }`,
-    { username }, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
-    { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
+    }`
+    // ,
+    // { username }, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
+    // { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
   );
 }
 

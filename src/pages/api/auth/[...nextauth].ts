@@ -36,9 +36,9 @@ export const authOptions: NextAuthOptions = {
     },
     async jwt({ token, user }) {
       if (user) {
-        token.sub = user.id;
+        token.id = user.id;
       }
-      return token; // 세션 정보를 저장하기 위해 토큰 반환
+      return token;
     },
   },
 
