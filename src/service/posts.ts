@@ -31,15 +31,15 @@ export async function getPost(id: string) {
   return client
     .fetch(
       `*[_type == "post" && _id == "${id}"][0]{
-      ...,
-      "username": author->username,
-      "userImage": author->image,
-      "image": photo,
-      "likes": likes[]->username,
-      comments[]{comment, "username": author->username, "image": author->image},
-      "id":_id,
-      "createdAt":_creatdAt
-    }`,
+        ...,
+        "username": author->username,
+        "userImage": author->image,
+        "image": photo,
+        "likes": likes[]->username,
+        comments[]{comment, "username": author->username, "image": author->image},
+        "id":_id,
+        "createdAt":_creatdAt
+      }`,
       { id }, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
       { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
     )

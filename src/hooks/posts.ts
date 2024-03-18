@@ -1,5 +1,5 @@
-import useSWR from "swr";
 import { SimplePost } from "@/model/post";
+import useSWR from "swr";
 
 async function updateLike(id: string, like: boolean) {
   return fetch("/api/likes", {
@@ -28,7 +28,7 @@ export default function usePosts() {
       ...post,
       likes: like
         ? [...post.likes, username]
-        : post.likes.filter((u) => u !== username),
+        : post.likes.filter((item) => item !== username),
     };
     const newPosts = posts?.map((p) => (p.id === post.id ? newPost : p));
 
@@ -54,6 +54,5 @@ export default function usePosts() {
       rollbackOnError: true,
     });
   };
-
   return { posts, isLoading, error, setLike, postComment };
 }
