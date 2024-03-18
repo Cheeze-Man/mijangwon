@@ -49,8 +49,8 @@ const Navbar = () => {
           className="text-3xl font-extrabold text-violet-800 hidden md:inline"
           src="/images/logo_text.png"
           alt="Ouroom"
-          width={210}
-          height={45}
+          width={200}
+          height={50}
           priority
         />
       </Link>
