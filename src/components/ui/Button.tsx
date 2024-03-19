@@ -1,11 +1,11 @@
 type Props = {
   text: string;
   onClick: () => void;
-  red: boolean;
+  red?: boolean;
   disabled?: boolean;
 };
 
-const Button = ({ text, red, onClick, disabled = false }: Props) => {
+const Button = ({ text, red = false, onClick, disabled = false }: Props) => {
   return (
     <button
       className={`border-none rounded-md py-2 px-8 text-white font-bold leading-4 ${
