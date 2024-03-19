@@ -19,7 +19,7 @@ export const authOptions: NextAuthOptions = {
         name: name || "",
         image,
         email,
-        username: email?.split("@")[0],
+        username: email.split("@")[0],
       });
       return true; // 로그인 성공시 true 반환 받아서 로그인 성공 페이지로 이동
     },
@@ -41,7 +41,6 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
   },
-
   pages: {
     signIn: "/auth/signin",
   },
