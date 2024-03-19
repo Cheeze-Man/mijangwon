@@ -1,7 +1,7 @@
 type Props = {
   text: string;
-  red: boolean;
   onClick: () => void;
+  red: boolean;
 };
 
 const Button = ({ text, red, onClick }: Props) => {
@@ -10,6 +10,7 @@ const Button = ({ text, red, onClick }: Props) => {
       className={`border-none rounded-md py-2 px-8 text-white font-bold leading-4 ${
         red ? "bg-red-500" : "bg-violet-500"
       }`}
+      onClick={() => onClick()}
     >
       {text}
     </button>

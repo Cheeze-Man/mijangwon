@@ -10,8 +10,8 @@ const UserProfile = ({ user }: Props) => {
   const { name, username, image, following, followers, posts } = user;
   const info = [
     { title: "post", data: posts },
-    { title: "following", data: following },
     { title: "followers", data: followers },
+    { title: "following", data: following },
   ];
 
   return (
