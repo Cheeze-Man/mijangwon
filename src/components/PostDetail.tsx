@@ -7,9 +7,10 @@ import PostUserAvatar from "./PostUserAvatar";
 
 type Props = {
   post: SimplePost;
+  cacheKey: string;
 };
 
-const PostDetail = ({ post }: Props) => {
+const PostDetail = ({ post, cacheKey }: Props) => {
   const { id, userImage, username, image } = post;
   const { post: data, postComment } = useFullPost(id);
   const comments = data?.comments;
@@ -46,7 +47,7 @@ const PostDetail = ({ post }: Props) => {
               )
             )}
         </ul>
-        <ActionBar post={post} onComment={postComment} />
+        <ActionBar post={post} onComment={postComment} cacheKey={cacheKey} />
       </div>
     </section>
   );

@@ -9,9 +9,10 @@ import PostDetail from "./PostDetail";
 type Props = {
   post: SimplePost;
   priority: boolean;
+  cacheKey: string;
 };
 
-const PostGridCard = ({ post, priority = false }: Props) => {
+const PostGridCard = ({ post, priority = false, cacheKey }: Props) => {
   const [openModal, setOpenModal] = useState(false);
   const { image, username } = post;
   const { data: session } = useSession();
@@ -37,7 +38,7 @@ const PostGridCard = ({ post, priority = false }: Props) => {
       {openModal && (
         <ModalPortal>
           <PostModal onClose={() => setOpenModal(false)}>
-            <PostDetail post={post} />
+            <PostDetail post={post} cacheKey={cacheKey} />
           </PostModal>
         </ModalPortal>
       )}
