@@ -71,7 +71,7 @@ export async function getUserProfile(username: string) {
     "followers": count(followers),
     "posts": count(*[type=="post" && author->username == "${username}"]),
   }`,
-      { username }, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
+      undefined, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
       { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
     )
     .then((user) => ({
