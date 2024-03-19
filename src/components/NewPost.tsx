@@ -4,6 +4,7 @@ import PostUserAvatar from "./PostUserAvatar";
 import FilesIcon from "./ui/icons/FilesIcon";
 import Button from "./ui/Button";
 import { ChangeEvent, useState } from "react";
+import Image from "next/image";
 
 type Props = {
   user: AuthUser;
@@ -42,9 +43,9 @@ const NewPost = ({ user: { username, image } }: Props) => {
   };
 
   return (
-    <section>
+    <section className="w-full max-w-xl flex flex-col items-center mt-6">
       <PostUserAvatar username={username} image={image ?? ""} />
-      <form>
+      <form className="w-full flex flex-col mt-2">
         <input
           className="hidden"
           name="input"
@@ -54,17 +55,38 @@ const NewPost = ({ user: { username, image } }: Props) => {
           onChange={handleChange}
         />
         <label
-          className="cursor-pointer"
+          className={`cursor-pointer w-full h-60 flex flex-col items-center justify-center ${
+            !file && "border-2 border-violet-500 border-dashed rounded-xl"
+          }`}
           htmlFor="input-upload"
           onDragEnter={handleDrag}
           onDragLeave={handleDrag}
           onDragOver={handleDragOver}
           onDrop={handleDrop}
         >
-          <FilesIcon />
-          <p>이미지 업로드 또는 파일 놓기</p>
+          {dragging && (
+            <div className="absolute inset-0 z-10 bg-violet-500/20 pointer-events-none" />
+          )}
+          {!file && (
+            <div className="flex flex-col items-center pointer-events-none">
+              <FilesIcon />
+              <p>이미지 업로드 또는 파일 놓기</p>
+            </div>
+          )}
+          {file && (
+            <div className="relative w-full aspect-square">
+              <Image
+                className="object-cover"
+                src={URL.createObjectURL(file)}
+                alt="local file"
+                fill
+                sizes="650px"
+              />
+            </div>
+          )}
         </label>
         <textarea
+          className="outline-none text-lg border border-neutral-300"
           required
           name="text"
           id="input-text"
