@@ -32,7 +32,7 @@ export async function getUserByUsername(username: string) {
       followers[]->{username,image},
       "bookmarks":bookmarks[]->_id
     }`,
-    { username }, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
+    undefined, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
     { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
   );
 }
@@ -49,7 +49,7 @@ export async function searchUsers(keyword?: string) {
     "following": count(following),
     "followers": count(followers),
   }`,
-      { keyword }, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
+      undefined, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
       { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
     )
     .then((users) =>
@@ -65,12 +65,12 @@ export async function getUserProfile(username: string) {
   return client
     .fetch(
       `*[_type == "user" && username == "${username}"][0]{
-    ...,
-    "id":_id,
-    "following": count(following),
-    "followers": count(followers),
-    "posts": count(*[type=="post" && author->username == "${username}"]),
-  }`,
+        ...,
+        "id":_id,
+        "following": count(following),
+        "followers": count(followers),
+        "posts": count(*[_type=="post" && author->username == "${username}"])
+      }`,
       undefined, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
       { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
     )

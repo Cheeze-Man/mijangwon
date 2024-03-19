@@ -1,5 +1,5 @@
 import { SimplePost } from "./../model/post";
-import { client, urlFor } from "./sanity";
+import { assetsURL, client, urlFor } from "./sanity";
 
 const simplePostProjection = `
     ...,
@@ -21,7 +21,7 @@ export async function getFollowingPostsOf(username: string) {
           | order(_createdAt desc){
           ${simplePostProjection}
         }`,
-      { username }, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
+      undefined, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
       { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
     )
     .then(mapPosts);
@@ -40,7 +40,7 @@ export async function getPost(id: string) {
         "id":_id,
         "createdAt":_creatdAt
       }`,
-      { id }, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
+      undefined, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
       { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
     )
     .then((post) => ({ ...post, image: urlFor(post.image) }));
@@ -53,7 +53,7 @@ export async function getPostsOf(username: string) {
       | order(_createdAt desc){
         ${simplePostProjection}
       }`,
-      { username }, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
+      undefined, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
       { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
     )
     .then(mapPosts);
@@ -65,7 +65,7 @@ export async function getLikedPostsOf(username: string) {
       | order(_createdAt desc){
         ${simplePostProjection}
       }`,
-      { username }, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
+      undefined, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
       { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
     )
     .then(mapPosts);
@@ -77,7 +77,7 @@ export async function getSavedPostsOf(username: string) {
       | order(_createdAt desc){
         ${simplePostProjection}
       }`,
-      { username }, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
+      undefined, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
       { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
     )
     .then(mapPosts);
@@ -125,4 +125,33 @@ export async function addComment(
       },
     ])
     .commit({ autoGenerateArrayKeys: true });
+}
+
+export async function createPost(userId: string, text: string, file: Blob) {
+  return fetch(assetsURL, {
+    method: "POST",
+    headers: {
+      "content-type": file.type,
+      authorization: `Bearer ${process.env.SANITY_SECRET_TOKEN}`,
+    },
+    body: file,
+  })
+    .then((res) => res.json())
+    .then((result) => {
+      return client.create(
+        {
+          _type: "post",
+          author: { _ref: userId },
+          photo: { asset: { _ref: result.document._id } },
+          comments: [
+            {
+              comment: text,
+              author: { _ref: userId, _type: "reference" },
+            },
+          ],
+          likes: [],
+        },
+        { autoGenerateArrayKeys: true }
+      );
+    });
 }

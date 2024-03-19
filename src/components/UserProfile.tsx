@@ -9,7 +9,7 @@ type Props = {
 const UserProfile = ({ user }: Props) => {
   const { name, username, image, following, followers, posts } = user;
   const info = [
-    { title: "post", data: posts },
+    { title: "posts", data: posts },
     { title: "followers", data: followers },
     { title: "following", data: following },
   ];

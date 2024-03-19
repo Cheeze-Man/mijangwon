@@ -12,7 +12,7 @@ type Props = {
 };
 const tabs = [
   { type: "posts", icon: <PostIcon /> },
-  { type: "likes", icon: <HeartIcon className="w-3 h-3" /> },
+  { type: "liked", icon: <HeartIcon className="w-3 h-3" /> },
   { type: "saved", icon: <BookmarkIcon className="w-3 h-3" /> },
 ];
 

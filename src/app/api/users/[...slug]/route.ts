@@ -3,10 +3,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 type Context = {
   params: {
-    slug: string[]; // "url/slug/slug/slug" 처럼 중첩된 라우트 가져올 수 있도록 배열로 받아 옴.
+    slug: string[];
   };
 };
-
 export async function GET(_: NextRequest, context: Context) {
   const { slug } = context.params;
 
