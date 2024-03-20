@@ -12,7 +12,7 @@ type Props = {
 
 const PostDetail = ({ post }: Props) => {
   const { id, userImage, username, image } = post;
-  const { post: data, postComment } = useFullPost(id);
+  const { post: data, postComment, deletePostedComment } = useFullPost(id);
   const comments = data?.comments;
 
   return (
@@ -49,6 +49,7 @@ const PostDetail = ({ post }: Props) => {
                     username={commentUsername}
                     postId={post.id}
                     index={index}
+                    onDelete={deletePostedComment}
                   />
                 </li>
               )

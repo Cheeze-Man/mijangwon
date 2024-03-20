@@ -8,9 +8,10 @@ type Props = {
   postId: string;
   index: number;
   username: string;
+  onDelete: (index: number) => Promise<any> | any;
 };
 
-const DeleteButton = ({ username, postId, index }: Props) => {
+const DeleteButton = ({ username, postId, index, onDelete }: Props) => {
   const { user: loggedInUser } = useMe();
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
@@ -20,29 +21,12 @@ const DeleteButton = ({ username, postId, index }: Props) => {
   const showButton =
     index > 0 && loggedInUser && loggedInUser.username === username;
 
-  const handleDelete = async () => {
-    setIsDeleting(true);
-
-    try {
-      const response = await fetch(`/api/comments`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ postId, index }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to delete comment");
-      }
-    } catch (error) {
-      console.error("Error deleting comment:", error);
-    } finally {
-      setIsDeleting(false);
-      startTransition(() => {
-        router.refresh();
-      });
-    }
+  const handleDelete = () => {
+    router.refresh();
+    startTransition(() => {
+      setIsDeleting(true);
+      onDelete(index).finally(() => setIsDeleting(false));
+    });
   };
 
   return (
