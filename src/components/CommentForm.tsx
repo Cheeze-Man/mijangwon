@@ -32,7 +32,7 @@ const CommentForm = ({ onPostComment }: Props) => {
       <button
         className={`box-border py-1 font-bold w-16 text-white border-b-4 rounded-md transition-all ${
           buttonDisabled
-            ? "bg-gray-300 border-gray-500"
+            ? "bg-violet-300 border-violet-500"
             : "bg-violet-500 hover:bg-violet-600 border-violet-700 hover:border-violet-500"
         }`}
         disabled={buttonDisabled}

@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { Comment, SimplePost } from "@/model/post";
 import usePosts from "@/hooks/posts";
@@ -27,7 +28,7 @@ const PostListCard = ({ post, priority = false }: Props) => {
     <article className="rounded-lg shadow-md border border-gray-200">
       <PostUserAvatar image={userImage} username={username} />
       <Image
-        className="w-full object-cover aspect-square"
+        className="w-full object-cover aspect-square cursor-pointer"
         src={image}
         alt={`photo by ${username}`}
         width={500}
@@ -37,7 +38,9 @@ const PostListCard = ({ post, priority = false }: Props) => {
       />
       <ActionBar post={post} onComment={handlePostComment}>
         <p>
-          <span className="font-bold mr-1">{username}</span>
+          <Link href={`/user/${username}`} className="font-bold mr-1">
+            {username}
+          </Link>
           {text}
         </p>
         {comments > 1 && (
