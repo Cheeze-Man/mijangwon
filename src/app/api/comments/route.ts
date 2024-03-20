@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { addComment } from "@/service/posts";
+import { addComment, removeComment } from "@/service/posts";
 import { withSessionUser } from "@/util/session";
 
 export async function POST(req: NextRequest) {
@@ -12,6 +12,22 @@ export async function POST(req: NextRequest) {
 
     return addComment(id, user.id, comment)
       .then((res) => NextResponse.json(res))
+      .catch((error) => new Response(JSON.stringify(error), { status: 500 }));
+  });
+}
+
+export async function DELETE(req: NextRequest) {
+  return withSessionUser(async () => {
+    const { postId, index } = await req.json();
+
+    if (!postId || !index) {
+      return new Response("Bad Request", { status: 400 });
+    }
+
+    return removeComment(postId, index)
+      .then(() =>
+        NextResponse.json({ message: "Comment removed successfully" })
+      )
       .catch((error) => new Response(JSON.stringify(error), { status: 500 }));
   });
 }

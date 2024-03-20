@@ -9,6 +9,13 @@ async function addComment(id: string, comment: string) {
   }).then((res) => res.json());
 }
 
+async function deleteComment(postId: string, index: number) {
+  return fetch("/api/comments/", {
+    method: "DELETE",
+    body: JSON.stringify({ postId, index }),
+  }).then((res) => res.json());
+}
+
 export default function useFullPost(postId: string) {
   const {
     data: post,
@@ -37,5 +44,24 @@ export default function useFullPost(postId: string) {
     [post, mutate, globalMutate]
   );
 
-  return { post, isLoading, error, postComment };
+  const deletePostedComment = useCallback(
+    (index: number) => {
+      if (!post) return;
+      const newComments = post.comments.filter((_, i) => i !== index);
+      const newPost = {
+        ...post,
+        comments: newComments,
+      };
+
+      return mutate(deleteComment(post.id, index), {
+        optimisticData: newPost,
+        populateCache: false,
+        revalidate: false,
+        rollbackOnError: true,
+      }).then(() => globalMutate("/api/posts"));
+    },
+    [post, mutate, globalMutate]
+  );
+
+  return { post, isLoading, error, postComment, deletePostedComment };
 }
