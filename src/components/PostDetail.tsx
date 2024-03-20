@@ -4,6 +4,7 @@ import useFullPost from "@/hooks/post";
 import Avatar from "./Avatar";
 import ActionBar from "./ActionBar";
 import PostUserAvatar from "./PostUserAvatar";
+import DeleteButton from "./ui/DeleteButton";
 
 type Props = {
   post: SimplePost;
@@ -32,16 +33,23 @@ const PostDetail = ({ post }: Props) => {
           {comments &&
             comments.map(
               ({ image, username: commentUsername, comment }, index) => (
-                <li className="flex items-center mb-1" key={index}>
-                  <Avatar
-                    image={image}
-                    size="small"
-                    highlight={commentUsername === username}
-                  />
+                <li className="w-full flex items-center mb-1" key={index}>
+                  <div>
+                    <Avatar
+                      image={image}
+                      size="small"
+                      highlight={commentUsername === username}
+                    />
+                  </div>
                   <div className="ml-2">
                     <span className="font-bold mr-1">{commentUsername}</span>
                     <span>{comment}</span>
                   </div>
+                  <DeleteButton
+                    username={commentUsername}
+                    postId={post.id}
+                    index={index}
+                  />
                 </li>
               )
             )}

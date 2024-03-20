@@ -127,6 +127,13 @@ export async function addComment(
     .commit({ autoGenerateArrayKeys: true });
 }
 
+export async function removeComment(postId: string, index: number) {
+  return client
+    .patch(postId)
+    .unset([`comments[${index}]`])
+    .commit();
+}
+
 export async function createPost(userId: string, text: string, file: Blob) {
   return fetch(assetsURL, {
     method: "POST",
