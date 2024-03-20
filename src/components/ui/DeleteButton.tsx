@@ -11,7 +11,7 @@ type Props = {
   onDelete: (index: number) => Promise<any> | any;
 };
 
-const DeleteButton = ({ username, postId, index, onDelete }: Props) => {
+const DeleteButton = ({ username, index, onDelete }: Props) => {
   const { user: loggedInUser } = useMe();
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
@@ -22,11 +22,14 @@ const DeleteButton = ({ username, postId, index, onDelete }: Props) => {
     index > 0 && loggedInUser && loggedInUser.username === username;
 
   const handleDelete = () => {
-    router.refresh();
-    startTransition(() => {
-      setIsDeleting(true);
-      onDelete(index).finally(() => setIsDeleting(false));
-    });
+    const confirmDelete = window.confirm("댓글을 삭제하시겠습니까?");
+    if (confirmDelete) {
+      router.refresh();
+      startTransition(() => {
+        setIsDeleting(true);
+        onDelete(index).finally(() => setIsDeleting(false));
+      });
+    }
   };
 
   return (
