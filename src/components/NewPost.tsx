@@ -120,7 +120,7 @@ const NewPost = ({ user: { username, image } }: Props) => {
           )}
         </label>
         <textarea
-          className="outline-none text-lg border border-neutral-300"
+          className="resize-none outline-none text-lg border rounded-md my-2 p-1 border-neutral-300 dark:border-black dark:bg-slate-900"
           required
           name="text"
           id="input-text"

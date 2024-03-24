@@ -11,7 +11,7 @@ const Avatar = ({ image, size = "large", highlight = false }: Props) => {
     <div className={getContainerStyle(size, highlight)}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        className={`bg-white object-cover rounded-full ${
+        className={`bg-white dark:bg-slate-800 object-cover rounded-full ${
           getImageSizeStyle(size).image
         }`}
         src={image ?? undefined}

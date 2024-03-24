@@ -11,6 +11,7 @@ import SearchFillIcon from "./ui/icons/SearchFillIcon";
 import SearchIcon from "./ui/icons/SearchIcon";
 import ColorButton from "./ui/ColorButton";
 import Avatar from "./Avatar";
+import DarkModeBtn from "./ui/DarkModeButton";
 
 const menu = [
   {
@@ -56,10 +57,13 @@ const Navbar = () => {
       </Link>
       <nav>
         <ul className="flex gap-4 items-center p-4">
+          <li>
+            <DarkModeBtn />
+          </li>
           {menu.map(({ path, icon, clickedIcon }) => (
             <li
               key={path}
-              className="hover:scale-105 transition-all text-violet-900"
+              className="hover:scale-105 transition-all text-violet-800"
             >
               <Link href={path}>{pathName === path ? clickedIcon : icon}</Link>
             </li>

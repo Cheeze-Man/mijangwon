@@ -11,7 +11,7 @@ const PostGrid = () => {
       {posts?.length === 0 && (
         <div className="w-full flex justify-center">
           <p className="font-bold text-xl text-gray-500 mt-20">
-            아직 포스팅한 게시물이 없어요😅
+            아직 게시물이 없어요😅
           </p>
         </div>
       )}

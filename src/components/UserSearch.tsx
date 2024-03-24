@@ -23,7 +23,7 @@ const UserSearch = () => {
     <section className="w-full max-w-2xl my-4 flex flex-col items-center">
       <form className="w-full mb-4" onSubmit={onSubmit}>
         <input
-          className="w-full text-xl p-3 outline-none border border-gray-400"
+          className="w-full text-xl p-3 outline-none border border-gray-400 dark:bg-slate-900 dark:border-black"
           type="text"
           autoFocus
           placeholder="사용자 이름을 입력해주세요."

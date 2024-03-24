@@ -25,7 +25,7 @@ const PostListCard = ({ post, priority = false }: Props) => {
   };
 
   return (
-    <article className="rounded-lg shadow-md border border-gray-200">
+    <article className="rounded-lg shadow-md border border-gray-200 dark:border-slate-900">
       <PostUserAvatar image={userImage} username={username} />
       <Image
         className="w-full object-cover aspect-square cursor-pointer"
