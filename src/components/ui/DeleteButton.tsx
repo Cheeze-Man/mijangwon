@@ -42,7 +42,7 @@ const DeleteButton = ({ username, index, onDelete }: Props) => {
             </div>
           )}
           <button
-            className={`border-none rounded-md p-1 text-white  leading-4 bg-violet-500 ${
+            className={`border-none rounded-md p-1 text-white leading-4 bg-violet-500 ${
               isUpdating && "opacity-60"
             }`}
             onClick={handleDelete}

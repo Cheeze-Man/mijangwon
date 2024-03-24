@@ -8,6 +8,13 @@ const PostGrid = () => {
   return (
     <div className="w-full text-center">
       {isLoading && <GridSpinner />}
+      {posts?.length === 0 && (
+        <div className="w-full flex justify-center">
+          <p className="font-bold text-xl text-gray-500 mt-20">
+            아직 포스팅한 게시물이 없어요😅
+          </p>
+        </div>
+      )}
       <ul className="grid grid-cols-3 gap-4 py-4 px-8">
         {posts &&
           posts.map((post, index) => (
