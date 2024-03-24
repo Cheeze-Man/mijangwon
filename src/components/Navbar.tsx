@@ -46,7 +46,11 @@ const Navbar = () => {
 
   return (
     <div className="flex justify-between items-center w-full max-w-screen-xl transition-all">
-      <Link className="flex items-center gap-1.5 p-4" href="/">
+      <Link
+        className="flex items-center gap-1.5 p-4"
+        href="/"
+        aria-label="Home"
+      >
         <Image
           className="text-3xl font-extrabold text-violet-800"
           src="/images/logo_mini.png"
@@ -89,6 +93,7 @@ const Navbar = () => {
                         "text-violet-700 font-bold scale-105"
                       }`}
                       href={path}
+                      aria-label={title}
                     >
                       {title}
                     </Link>
@@ -97,12 +102,14 @@ const Navbar = () => {
               </ul>
             )}
           </li>
-          {menu.map(({ path, icon, clickedIcon }) => (
+          {menu.map(({ path, icon, clickedIcon, title }) => (
             <li
               key={path}
               className="hover:scale-105 transition-all text-violet-800 hidden md:inline"
             >
-              <Link href={path}>{pathName === path ? clickedIcon : icon}</Link>
+              <Link href={path} aria-label={title}>
+                {pathName === path ? clickedIcon : icon}
+              </Link>
             </li>
           ))}
           {user && (
