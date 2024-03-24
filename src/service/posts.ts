@@ -22,8 +22,8 @@ export async function getFollowingPostsOf(username: string) {
           | order(_createdAt desc){
           ${simplePostProjection}
         }`,
-      undefined, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
-      { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
+      undefined,
+      { cache: "no-store" }
     )
     .then(mapPosts);
 }
@@ -41,8 +41,8 @@ export async function getPost(id: string) {
         "id":_id,
         "createdAt":_creatdAt
       }`,
-      undefined, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
-      { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
+      undefined,
+      { cache: "no-store" }
     )
     .then((post) => ({ ...post, image: urlFor(post.image) }));
 }
@@ -54,8 +54,8 @@ export async function getPostsOf(username: string) {
       | order(_createdAt desc){
         ${simplePostProjection}
       }`,
-      undefined, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
-      { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
+      undefined,
+      { cache: "no-store" }
     )
     .then(mapPosts);
 }
@@ -66,8 +66,8 @@ export async function getLikedPostsOf(username: string) {
       | order(_createdAt desc){
         ${simplePostProjection}
       }`,
-      undefined, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
-      { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
+      undefined,
+      { cache: "no-store" }
     )
     .then(mapPosts);
 }
@@ -78,8 +78,8 @@ export async function getSavedPostsOf(username: string) {
       | order(_createdAt desc){
         ${simplePostProjection}
       }`,
-      undefined, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
-      { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
+      undefined,
+      { cache: "no-store" }
     )
     .then(mapPosts);
 }

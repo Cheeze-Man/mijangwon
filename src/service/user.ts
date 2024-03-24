@@ -32,8 +32,8 @@ export async function getUserByUsername(username: string) {
       followers[]->{username,image},
       "bookmarks":bookmarks[]->_id
     }`,
-    undefined, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
-    { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
+    undefined,
+    { cache: "no-store" }
   );
 }
 
@@ -49,8 +49,8 @@ export async function searchUsers(keyword?: string) {
     "following": count(following),
     "followers": count(followers),
   }`,
-      undefined, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
-      { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
+      undefined,
+      { cache: "no-store" }
     )
     .then((users) =>
       users.map((user: SearchUser) => ({
@@ -71,8 +71,8 @@ export async function getUserProfile(username: string) {
         "followers": count(followers),
         "posts": count(*[_type=="post" && author->username == "${username}"])
       }`,
-      undefined, // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
-      { cache: "no-store" } // TODO: 나중에 지우기 (오래된 데이터를 불러오는 문제를 해결하기 위해 임시적으로 넣음.)
+      undefined,
+      { cache: "no-store" }
     )
     .then((user) => ({
       ...user,
@@ -84,7 +84,7 @@ export async function getUserProfile(username: string) {
 
 export async function addBookmark(userId: string, postId: string) {
   return client
-    .patch(userId) //
+    .patch(userId)
     .setIfMissing({ bookmarks: [] })
     .append("bookmarks", [
       {

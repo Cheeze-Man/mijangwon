@@ -40,9 +40,10 @@ const PostDetail = ({ post }: Props) => {
           className="object-cover"
           src={image}
           alt={`photo by ${username}`}
+          sizes="650px"
+          quality={100}
           priority
           fill
-          sizes="650px"
         />
       </div>
       <div className="w-full basis-2/5 flex flex-col dark:bg-slate-800">

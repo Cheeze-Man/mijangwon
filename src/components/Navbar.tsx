@@ -53,6 +53,7 @@ const Navbar = () => {
           alt="O"
           width={45}
           height={45}
+          quality={100}
           priority
         />
         <Image
@@ -61,6 +62,7 @@ const Navbar = () => {
           alt="Ouroom"
           width={200}
           height={50}
+          quality={100}
           priority
         />
       </Link>
