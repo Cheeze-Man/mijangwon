@@ -45,14 +45,14 @@ const PostDetail = ({ post }: Props) => {
           sizes="650px"
         />
       </div>
-      <div className="w-full basis-2/5 flex flex-col">
+      <div className="w-full basis-2/5 flex flex-col dark:bg-slate-800">
         <div className="flex items-center justify-between">
           <PostUserAvatar image={userImage} username={username} />
           {username === loggedInUser?.username && (
             <PostDeleteButton onDelete={handlePostDelete} />
           )}
         </div>
-        <ul className="border-t border-gray-200 h-full overflow-y-auto p-4 mb-1">
+        <ul className="border-t border-gray-200 dark:border-slate-900 h-full overflow-y-auto p-4 mb-1">
           {comments &&
             comments.map(
               ({ image, username: commentUsername, comment }, index) => (

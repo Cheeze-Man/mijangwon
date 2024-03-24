@@ -10,7 +10,7 @@ const FollowingBar = () => {
   const users = user?.following;
 
   return (
-    <section className="relative z-0 w-full flex justify-center items-center p-4 shadow-md shadow-neutral-300 mb-4 rounded-lg min-h-[90px] overflow-x-auto">
+    <section className="relative z-0 w-full flex justify-center items-center p-4 shadow-md shadow-neutral-300 dark:shadow-black mb-4 rounded-lg min-h-[90px] overflow-x-auto">
       {isLoading ? (
         <SyncLoader size={15} color="#8B5CF6" />
       ) : (
