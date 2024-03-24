@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import { SimplePost } from "./../model/post";
 import { assetsURL, client, urlFor } from "./sanity";
 
@@ -160,5 +161,20 @@ export async function createPost(userId: string, text: string, file: Blob) {
         },
         { autoGenerateArrayKeys: true }
       );
+    });
+}
+
+export async function deletePost(postId: string) {
+  return client
+    .delete({
+      query: `*[_type == "post" && _id == "${postId}"][0]`,
+    })
+    .then(() => {
+      console.log(
+        `The document matching *[_type == "post" && _id == "${postId}"][0] was deleted`
+      );
+    })
+    .catch((err) => {
+      console.error("Delete failed: ", err.message);
     });
 }

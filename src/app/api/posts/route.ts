@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createPost, getFollowingPostsOf } from "@/service/posts";
+import { createPost, deletePost, getFollowingPostsOf } from "@/service/posts";
 import { withSessionUser } from "@/util/session";
 
 export async function GET() {
