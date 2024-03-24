@@ -33,6 +33,7 @@ const PostListCard = ({ post, priority = false }: Props) => {
         alt={`photo by ${username}`}
         width={500}
         height={500}
+        quality={100}
         priority={priority}
         onClick={() => setOpenModal(true)}
       />

@@ -31,6 +31,7 @@ const PostGridCard = ({ post, priority = false }: Props) => {
         alt={`photo by ${username}`}
         fill
         sizes="650px"
+        quality={100}
         priority={priority}
         onClick={handleOpenPost}
       />

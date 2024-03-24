@@ -113,8 +113,9 @@ const NewPost = ({ user: { username, image } }: Props) => {
                 className="object-cover"
                 src={URL.createObjectURL(file)}
                 alt="local file"
-                fill
                 sizes="650px"
+                quality={100}
+                fill
               />
             </div>
           )}
