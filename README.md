@@ -1,38 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Ouroom - 아우름
 
-## Getting Started
+<p>
+  <img width="50" src='https://github.com/Cheeze-Man/ouroom/assets/124056699/2b8e5dd3-9a8a-4d2e-9d78-cbba906748b9'/>
+  <img width="300" src='https://github.com/Cheeze-Man/ouroom/assets/124056699/7b72a795-f391-459f-a8ca-3dc808029c0b'/>
+</p>
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+> 개발 기간 - 2024.03 ~ <br/>
+> Link - https://ouroom.vercel.app/
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<br/><br/>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 팀원 소개
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+|백엔드|프론트엔드|
+|:--:|:--:|
+|<img width="150" src="https://github.com/Cheeze-Man/ouroom/assets/124056699/ddd76fe5-977f-4050-bc91-8afaa667be56">|<img width="150" src="https://github.com/Cheeze-Man/ouroom/assets/124056699/480677bb-826a-477b-8801-aab1934c8e22">|
+|[박동철](https://github.com/Cheeze-Man)|[박동철](https://github.com/Cheeze-Man)|
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<br/><br/>
 
-## Learn More
+## 프로젝트 소개
+Ouroom 아우름은 소셜 네트워크 서비스로,  <br/>
+유저가 다른 유저를 검색해 팔로우하고 그들의 일상을 연속적인 카드 형식의 리스트로 확인할 수 있습니다. <br/>
+또한 포스트에 좋아요나 북마크 등의 상호작용을 통해 관심을 표현하고, <br/>
+본인의 프로필에서 이를 모아 볼 수 있는 기능을 제공합니다. <br/>
+원하는 게시물에 댓글을 추가하거나 삭제할 수 있으며, <br/>
+사진과 함께 포스트를 작성하거나 삭제할 수도 있습니다. <br/>
+사용자 편의를 위해 구글 로그인을 지원하며, <br/>
+초기 가입 후 홈 화면의 가이드용 포스트를 통해 기본적인 이용 방법을 확인할 수 있습니다. <br/>
+(다크 모드를 지원합니다.)
 
-To learn more about Next.js, take a look at the following resources:
+<br/><br/>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 기술 스택
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### 환경
+<div display='flex'>
+  <img src="https://img.shields.io/badge/vscode-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white">
+  <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=visualstudiocode&logoColor=white">
+  <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+</div>
 
-## Deploy on Vercel
+### 개발
+<div display='flex'>
+  <img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
+  <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white">
+  <img src="https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">
+  <img src="https://img.shields.io/badge/swr-000000?style=for-the-badge&logo=swr&logoColor=white">
+  <img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">
+  <img src="https://img.shields.io/badge/sanity-F03E2F?style=for-the-badge&logo=sanity&logoColor=white">
+  <img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
+</div>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 패키지 매니저 및 배포
+<div display='flex'>
+  <img src="https://img.shields.io/badge/yarn-2C8EBB?style=for-the-badge&logo=yarn&logoColor=white">
+  <img src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white">
+</div>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### 기타 라이브러리
+- next-auth
+- next-themes
+- react-icons
+- react-spinners
+- react-multi-carousel
+- timeago.js
